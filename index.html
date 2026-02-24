@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quem Sou Eu | Pedro Henrique</title>
+  <meta name="description" content="Conheça Pedro Henrique: trajetória, valores e estilo de atendimento psicológico com acolhimento e estratégia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f1c2e;
+      --bg-soft: #152844;
+      --text: #f4f1ea;
+      --muted: #d6cebe;
+      --card: #162840;
+      --accent: #c6a85e;
+      --accent-2: #c07a5a;
+      --border: #2a446d;
+      --shadow: 0 20px 45px rgba(8, 12, 20, 0.5);
+      --radius: 20px;
+      --container: 1140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(198, 168, 94, 0.18), transparent 28%),
+        radial-gradient(circle at 85% 85%, rgba(31, 58, 104, 0.35), transparent 30%),
+        var(--bg);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(12px);
+      opacity: 0.35;
+      animation: drift 12s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 340px;
+      height: 340px;
+      left: -120px;
+      top: -90px;
+      background: rgba(198, 168, 94, 0.35);
+    }
+
+    .orb.two {
+      width: 260px;
+      height: 260px;
+      right: -70px;
+      top: 28%;
+      background: rgba(192, 122, 90, 0.3);
+      animation-delay: -3s;
+    }
+
+    .orb.three {
+      width: 210px;
+      height: 210px;
+      left: 45%;
+      bottom: -80px;
+      background: rgba(31, 58, 104, 0.45);
+      animation-delay: -6s;
+    }
+
+    .container {
+      width: min(100% - 2.4rem, var(--container));
+      margin-inline: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      border: 1px solid rgba(198, 168, 94, 0.55);
+      background: rgba(198, 168, 94, 0.14);
+      color: var(--accent);
+      padding: 0.42rem 0.82rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 800;
+      font-size: 0.76rem;
+    }
+
+    h1, h2, h3 {
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.3rem);
+      margin-top: 1rem;
+      max-width: 14ch;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.35vw, 1.08rem);
+      line-height: 1.7;
+    }
+
+    .hero {
+      padding-top: 6rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-copy p {
+      max-width: 56ch;
+      margin-top: 1rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .stat {
+      border: 1px solid rgba(244, 241, 234, 0.15);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.85rem;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      animation: pulseSoft 3s ease-in-out infinite;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 460px;
+      display: grid;
+      place-items: center;
+      perspective: 900px;
+    }
+
+    .photo-main,
+    .photo-card {
+      position: absolute;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+      background: #12233a;
+    }
+
+    .photo-main {
+      width: min(88%, 430px);
+      aspect-ratio: 4 / 5;
+      animation: float 6s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    .photo-card {
+      width: min(42%, 185px);
+      aspect-ratio: 3 / 4;
+      z-index: 2;
+    }
+
+    .photo-card.left {
+      left: 2%;
+      bottom: 5%;
+      transform: rotate(-9deg);
+      animation: swayLeft 5s ease-in-out infinite;
+    }
+
+    .photo-card.right {
+      right: 2%;
+      top: 5%;
+      transform: rotate(9deg);
+      animation: swayRight 5s ease-in-out infinite;
+    }
+
+    .photo-main img,
+    .photo-card img,
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 70ch;
+      margin: 0 auto 2rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .timeline-card {
+      background: linear-gradient(150deg, #1a2f4b, #12233a);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    }
+
+    .timeline-card h3 {
+      margin-bottom: 0.4rem;
+      font-size: 1.3rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .value-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.3rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::after {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      right: -45px;
+      top: -45px;
+      background: rgba(198, 168, 94, 0.12);
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(198, 168, 94, 0.6);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 1fr;
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      min-height: 240px;
+      position: relative;
+      background: #112139;
+    }
+
+    .gallery-item.tall { min-height: 390px; }
+    .gallery-item.medium { min-height: 310px; }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(12, 19, 30, 0.75));
+    }
+
+    .gallery-item span {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 2;
+      font-weight: 700;
+      color: #f4f1ea;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-item img {
+      transition: transform 0.5s ease;
+    }
+
+    .cta {
+      background: linear-gradient(130deg, #1f3a68, #0f1c2e);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 28px;
+      text-align: center;
+      padding: 3rem 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      top: -100px;
+      right: -90px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--accent);
+      color: #0f1c2e;
+      font-weight: 800;
+      border-radius: 12px;
+      padding: 0.95rem 1.3rem;
+      margin-top: 1rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 12px 28px rgba(198, 168, 94, 0.33);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(198, 168, 94, 0.4);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 0 3rem;
+      color: #97a9c0;
+      font-size: 0.92rem;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(22px, -20px, 0) scale(1.05); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes swayLeft {
+      0%, 100% { transform: translateY(0) rotate(-9deg); }
+      50% { transform: translateY(-9px) rotate(-11deg); }
+    }
+
+    @keyframes swayRight {
+      0%, 100% { transform: translateY(0) rotate(9deg); }
+      50% { transform: translateY(-9px) rotate(11deg); }
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(198, 168, 94, 0.18); }
+      65% { box-shadow: 0 0 0 12px rgba(198, 168, 94, 0); }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .values-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 4.5rem;
+      }
+
+      .hero-visual {
+        min-height: 420px;
+        margin-top: 1rem;
+      }
+
+      .photo-card.left,
+      .photo-card.right {
+        width: 38%;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="orb one"></span>
+    <span class="orb two"></span>
+    <span class="orb three"></span>
+  </div>
+
+  <main>
+    <section class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="tag">Quem sou eu</span>
+          <h1>Pedro Henrique, psicólogo movido por escuta, verdade e transformação.</h1>
+          <p>
+            Minha missão é oferecer um espaço seguro para você se entender melhor, aliviar dores emocionais e construir uma vida mais leve.
+            Trabalho com acolhimento real, técnica e acompanhamento próximo em cada etapa do processo.
+          </p>
+          <div class="hero-stats">
+            <article class="stat">
+              <strong class="counter" data-target="100" data-suffix="%">0</strong>
+              <small>presença em cada sessão</small>
+            </article>
+            <article class="stat">
+              <strong class="counter" data-target="40" data-suffix="+">0</strong>
+              <small>atendimentos realizados</small>
+            </article>
+            <article class="stat">
+              <strong class="counter" data-target="72" data-suffix="h">0</strong>
+              <small>prazo médio 1ª sessão</small>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" id="parallax-area">
+          <figure class="photo-main parallax" data-speed="12">
+            <img src="pedro-henrique.jpg" alt="Retrato de Pedro Henrique" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#1f3a68,#0f1c2e)'" />
+          </figure>
+          <figure class="photo-card left parallax" data-speed="20">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Caderno de anotações para terapia" />
+          </figure>
+          <figure class="photo-card right parallax" data-speed="16">
+            <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?auto=format&fit=crop&w=800&q=80" alt="Ambiente acolhedor de atendimento" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Minha trajetória</span>
+          <h2>Um caminho construído com propósito.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-card reveal">
+            <h3>Escolha pela Psicologia</h3>
+            <p>Entendi cedo que queria trabalhar com pessoas de forma profunda, ajudando a reorganizar emoções e fortalecer decisões.</p>
+          </article>
+          <article class="timeline-card reveal">
+            <h3>Formação e prática</h3>
+            <p>Durante a formação, foquei em escuta qualificada, ética e intervenções adaptadas à realidade de cada paciente.</p>
+          </article>
+          <article class="timeline-card reveal">
+            <h3>Atendimento atual</h3>
+            <p>Hoje conduzo sessões individuais com foco em ansiedade, autoestima e relacionamentos, sempre com clareza e acolhimento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Como eu trabalho</span>
+          <h2>Valores que guiam cada encontro.</h2>
+        </div>
+        <div class="values-grid">
+          <article class="value-card reveal">
+            <h3>Escuta ativa</h3>
+            <p>Você é ouvido sem julgamentos, com atenção real ao que sente e ao que ainda não conseguiu colocar em palavras.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3>Estratégia prática</h3>
+            <p>As sessões geram direção, com objetivos claros para transformar reflexões em atitudes no dia a dia.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3>Processo humano</h3>
+            <p>O cuidado é profissional, mas também próximo. O vínculo terapêutico é parte central da evolução.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Galeria</span>
+          <h2>Imagens que representam meu trabalho.</h2>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item tall reveal">
+            <img src="pedro-henrique.jpg" alt="Pedro Henrique em retrato profissional" onerror="this.style.display='none'" />
+            <span>Presença e escuta</span>
+          </figure>
+          <figure class="gallery-item medium reveal">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=900&q=80" alt="Livros e ambiente de estudo" />
+            <span>Base técnica</span>
+          </figure>
+          <figure class="gallery-item tall reveal">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80" alt="Momento de reflexão e calma" />
+            <span>Acolhimento</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta reveal">
+          <h2>Se você quer começar sua jornada, estou aqui para te acompanhar.</h2>
+          <p>Agende sua consulta e dê o primeiro passo para viver com mais clareza emocional e segurança nas decisões.</p>
+          <a class="btn" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Pedro%20Henrique.%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer">Agendar consulta</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Pedro Henrique | Psicólogo - Sigilo, ética e acolhimento.</div>
+  </footer>
+
+  <script>
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    revealElements.forEach((el, idx) => {
+      el.style.transitionDelay = (idx % 3) * 90 + 'ms';
+      revealObserver.observe(el);
+    });
+
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+        const target = Number(el.dataset.target || 0);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const stepMs = 18;
+        const increment = Math.max(1, Math.round(target / (duration / stepMs)));
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = current + suffix;
+        }, stepMs);
+
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.45 });
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+
+    const parallaxArea = document.getElementById('parallax-area');
+    if (parallaxArea) {
+      const layers = parallaxArea.querySelectorAll('.parallax');
+      parallaxArea.addEventListener('mousemove', (event) => {
+        const rect = parallaxArea.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+
+        layers.forEach((layer) => {
+          const speed = Number(layer.dataset.speed || 10);
+          const moveX = (x - cx) / speed;
+          const moveY = (y - cy) / speed;
+          layer.style.transform = 'translate(' + moveX.toFixed(1) + 'px,' + moveY.toFixed(1) + 'px)';
+        });
+      });
+
+      parallaxArea.addEventListener('mouseleave', () => {
+        layers.forEach((layer) => {
+          layer.style.transform = '';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
+
