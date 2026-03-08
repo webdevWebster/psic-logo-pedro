@@ -1,0 +1,632 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quem Sou Eu | Pedro Henrique</title>
+    <meta
+      name="description"
+      content="Conheca a historia, valores e forma de trabalho do psicologo Pedro Henrique em uma experiencia de rolagem continua."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0f1c2e;
+        --bg-soft: #152844;
+        --text: #f4f1ea;
+        --muted: #d6cebe;
+        --card: #162840;
+        --accent: #c6a85e;
+        --accent-2: #c07a5a;
+        --border: #2a446d;
+        --shadow: 0 20px 45px rgba(8, 12, 20, 0.5);
+        --radius: 20px;
+        --container: 1140px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Manrope", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(198, 168, 94, 0.18),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 85% 85%,
+            rgba(31, 58, 104, 0.35),
+            transparent 30%
+          ),
+          var(--bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .ambient {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .orb {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(12px);
+        opacity: 0.35;
+        animation: drift 12s ease-in-out infinite;
+      }
+
+      .orb.one {
+        width: 340px;
+        height: 340px;
+        left: -120px;
+        top: -90px;
+        background: rgba(198, 168, 94, 0.35);
+      }
+
+      .orb.two {
+        width: 260px;
+        height: 260px;
+        right: -70px;
+        top: 28%;
+        background: rgba(192, 122, 90, 0.3);
+        animation-delay: -3s;
+      }
+
+      .orb.three {
+        width: 210px;
+        height: 210px;
+        left: 45%;
+        bottom: -80px;
+        background: rgba(31, 58, 104, 0.45);
+        animation-delay: -6s;
+      }
+
+      .container {
+        width: min(100% - 2.4rem, var(--container));
+        margin-inline: auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      .tag {
+        display: inline-flex;
+        border: 1px solid rgba(198, 168, 94, 0.55);
+        background: rgba(198, 168, 94, 0.14);
+        color: var(--accent);
+        padding: 0.42rem 0.82rem;
+        border-radius: 999px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 800;
+        font-size: 0.76rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Fraunces", serif;
+        letter-spacing: -0.01em;
+        line-height: 1.15;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 6vw, 4.3rem);
+        margin-top: 1rem;
+        max-width: 15ch;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 4vw, 2.9rem);
+      }
+
+      p {
+        color: var(--muted);
+        font-size: clamp(1rem, 1.35vw, 1.08rem);
+        line-height: 1.7;
+      }
+
+      .hero {
+        padding-top: 5.5rem;
+        padding-bottom: 2rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: 1.4rem;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        align-items: center;
+      }
+
+      .hero p {
+        max-width: 58ch;
+      }
+
+      .hero-visual {
+        border: 1px solid var(--border);
+        border-radius: 26px;
+        min-height: 360px;
+        overflow: hidden;
+        background: linear-gradient(130deg, #1c3150, #112038);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .story-section {
+        padding-top: 2.2rem;
+        padding-bottom: 2.6rem;
+      }
+
+      .story-intro {
+        border: 1px solid var(--border);
+        background: linear-gradient(150deg, #1a2f4b, #12233a);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1.3rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .story-intro h2 {
+        margin: 0.8rem 0;
+      }
+
+      .story-feed {
+        display: grid;
+        gap: 0.85rem;
+        padding-inline: clamp(0.55rem, 1.7vw, 1rem);
+      }
+
+      .story-card {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+      }
+
+      .story-card.is-reverse .story-photo {
+        order: 2;
+      }
+
+      .story-card.is-reverse .story-content {
+        order: 1;
+        border-left: 0;
+        border-right: 1px solid var(--border);
+      }
+
+      .story-photo {
+        position: relative;
+        min-height: 100%;
+        background: #112038;
+      }
+
+      .story-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(9, 17, 29, 0.1) 0%,
+          rgba(9, 17, 29, 0.2) 60%,
+          rgba(9, 17, 29, 0.55) 100%
+        );
+      }
+
+      .story-card.is-reverse .story-photo::after {
+        background: linear-gradient(
+          270deg,
+          rgba(9, 17, 29, 0.1) 0%,
+          rgba(9, 17, 29, 0.2) 60%,
+          rgba(9, 17, 29, 0.55) 100%
+        );
+      }
+
+      .story-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .story-content {
+        position: relative;
+        z-index: 1;
+        min-height: 100%;
+        margin: 0;
+        padding: clamp(1.5rem, 4vw, 3rem);
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        justify-content: center;
+        background: linear-gradient(170deg, #162840, #12233a);
+        border-left: 1px solid var(--border);
+      }
+
+      .story-index {
+        width: fit-content;
+        border: 1px solid rgba(198, 168, 94, 0.45);
+        background: rgba(15, 28, 46, 0.7);
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 0.74rem;
+        letter-spacing: 0.05em;
+        border-radius: 999px;
+        padding: 0.3rem 0.65rem;
+      }
+
+      .story-content h3 {
+        font-size: clamp(1.55rem, 4.2vw, 2.9rem);
+        max-width: 14ch;
+      }
+
+      .story-content p {
+        max-width: 42ch;
+        color: #e8e1d4;
+      }
+
+      .endless-note {
+        text-align: center;
+        color: #97a9c0;
+        font-size: 0.95rem;
+        padding: 1rem 0 0;
+      }
+
+      .sentinel {
+        width: 100%;
+        height: 1px;
+      }
+
+      .cta {
+        margin-top: 1.2rem;
+        background: linear-gradient(130deg, #1f3a68, #0f1c2e);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 28px;
+        text-align: center;
+        padding: 3rem 1.2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        top: -100px;
+        right: -90px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: var(--accent);
+        color: #0f1c2e;
+        font-weight: 800;
+        border-radius: 12px;
+        padding: 0.95rem 1.3rem;
+        margin-top: 1rem;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+        box-shadow: 0 12px 28px rgba(198, 168, 94, 0.33);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 32px rgba(198, 168, 94, 0.4);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .footer {
+        text-align: center;
+        padding: 2rem 0 3rem;
+        color: #97a9c0;
+        font-size: 0.92rem;
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        50% {
+          transform: translate3d(22px, -20px, 0) scale(1.05);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 4.5rem;
+        }
+
+        .story-section {
+          padding-top: 1.4rem;
+        }
+
+        .story-card {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+
+        .story-card.is-reverse .story-photo,
+        .story-card.is-reverse .story-content {
+          order: initial;
+        }
+
+        .story-photo {
+          min-height: 46svh;
+        }
+
+        .story-content {
+          min-height: auto;
+          padding: 1.25rem 1.2rem 1.7rem;
+          border-left: 0;
+          border-top: 1px solid var(--border);
+        }
+
+        .story-content h3 {
+          font-size: clamp(1.35rem, 8vw, 2rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="orb one"></span>
+      <span class="orb two"></span>
+      <span class="orb three"></span>
+    </div>
+
+    <main>
+      <section class="section hero">
+        <div class="container hero-grid">
+          <div class="reveal">
+            <span class="tag">Quem sou eu</span>
+            <h1>Uma jornada clinica feita de presenca e transformacao.</h1>
+            <p>
+              Esta pagina acompanha minha historia em formato continuo. Ao rolar
+              para baixo, voce encontra experiencias, valores e forma de
+              atuacao que guiam meu trabalho como psicologo.
+            </p>
+          </div>
+          <figure class="hero-visual reveal">
+            <img
+              src="pedro-henrique.jpg"
+              alt="Retrato profissional do psicologo Pedro Henrique"
+              onerror="
+                this.style.display = 'none';
+                this.parentElement.style.background =
+                  'linear-gradient(160deg,#1f3a68,#0f1c2e)';
+              "
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section story-section">
+        <div class="container">
+          <aside class="story-intro reveal">
+            <span class="tag">Scroll infinito</span>
+            <h2>Meu percurso, em movimento.</h2>
+            <p>
+              Cada bloco traz um recorte da minha pratica: formacao, escuta
+              clinica, manejo emocional e acompanhamento individual.
+            </p>
+            <p>
+              A rolagem continua simboliza o processo terapeutico: evolutivo,
+              consistente e sempre aberto a novas camadas.
+            </p>
+          </aside>
+        </div>
+        <div id="story-feed" class="story-feed"></div>
+        <div class="container">
+          <p class="endless-note">
+            Continue rolando: novos capitulos surgem automaticamente.
+          </p>
+          <div id="sentinel" class="sentinel" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cta reveal">
+            <h2>Se fizer sentido para voce, vamos iniciar esse processo.</h2>
+            <p>
+              Um espaco terapeutico seguro, etico e direcionado para suas
+              necessidades atuais.
+            </p>
+            <a
+              class="btn"
+              href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Pedro%20Henrique.%20Gostaria%20de%20agendar%20uma%20consulta."
+              target="_blank"
+              rel="noopener noreferrer"
+              >Agendar consulta</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        Pedro Henrique | Psicologo - Escuta, etica e estrategia terapeutica.
+      </div>
+    </footer>
+
+    <script>
+      const entries = [
+        {
+          title: "Escolha pela Psicologia",
+          text: "A decisao de atuar na clinica nasceu da vontade de oferecer um cuidado emocional profundo, com espaco real para escuta e reconstrucao de sentido.",
+          img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?auto=format&fit=crop&w=1200&q=80",
+          alt: "Pessoa escrevendo em caderno durante reflexao",
+        },
+        {
+          title: "Base academica e tecnica",
+          text: "Minha formacao foi guiada por estudo constante e supervisao, buscando integrar teoria, sensibilidade clinica e intervencoes aplicaveis ao cotidiano.",
+          img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+          alt: "Mesa com livros e anotacoes de estudo",
+        },
+        {
+          title: "Escuta sem julgamento",
+          text: "Cada atendimento e conduzido com acolhimento e clareza, para que o paciente possa nomear emocoes, compreender padroes e abrir novas possibilidades.",
+          img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+          alt: "Ambiente confortavel para conversa terapeutica",
+        },
+        {
+          title: "Ansiedade e regulacao emocional",
+          text: "Atuo no desenvolvimento de recursos para lidar com ansiedade, sobrecarga mental e inseguranca, fortalecendo escolhas mais estaveis e saudaveis.",
+          img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80",
+          alt: "Pessoa em momento de respiracao e calma",
+        },
+        {
+          title: "Autoestima e identidade",
+          text: "O processo terapeutico tambem e um trabalho de reconhecimento pessoal: historia, limites, desejos e a construcao de uma relacao mais justa consigo.",
+          img: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80",
+          alt: "Pessoa refletindo em frente ao espelho",
+        },
+        {
+          title: "Relacionamentos e vinculos",
+          text: "Nas sessoes, investigamos padroes de vinculo, comunicacao e fronteiras emocionais para relacoes mais conscientes e menos desgastantes.",
+          img: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=80",
+          alt: "Duas pessoas conversando com atencao",
+        },
+        {
+          title: "Estrategia e acompanhamento",
+          text: "Alem da escuta, construimos objetivos terapeuticos com direcao pratica. O cuidado e continuo, respeitando ritmo, contexto e singularidade.",
+          img: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?auto=format&fit=crop&w=1200&q=80",
+          alt: "Sala de atendimento psicologico acolhedora",
+        },
+      ];
+
+      const feed = document.getElementById("story-feed");
+      const sentinel = document.getElementById("sentinel");
+      let pointer = 0;
+      let chapter = 1;
+      let isLoading = false;
+
+      const revealObserver = new IntersectionObserver(
+        (entriesList) => {
+          entriesList.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("show");
+            revealObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.14 },
+      );
+
+      document.querySelectorAll(".reveal").forEach((el, idx) => {
+        el.style.transitionDelay = (idx % 3) * 80 + "ms";
+        revealObserver.observe(el);
+      });
+
+      function createCard(data, index) {
+        const card = document.createElement("article");
+        const reversed = index % 2 === 1;
+        card.className = "story-card reveal" + (reversed ? " is-reverse" : "");
+        card.innerHTML =
+          '<figure class="story-photo">' +
+          '<img src="' +
+          data.img +
+          '" alt="' +
+          data.alt +
+          '" loading="lazy" />' +
+          "</figure>" +
+          '<div class="story-content">' +
+          '<span class="story-index">CAPITULO ' +
+          String(chapter).padStart(2, "0") +
+          "</span>" +
+          "<h3>" +
+          data.title +
+          "</h3>" +
+          "<p>" +
+          data.text +
+          "</p>" +
+          "</div>";
+        chapter += 1;
+        return card;
+      }
+
+      function appendBatch(batchSize) {
+        for (let i = 0; i < batchSize; i += 1) {
+          const item = entries[pointer % entries.length];
+          const card = createCard(item, pointer);
+          feed.appendChild(card);
+          revealObserver.observe(card);
+          pointer += 1;
+        }
+      }
+
+      appendBatch(5);
+
+      const feedObserver = new IntersectionObserver(
+        (observerEntries) => {
+          observerEntries.forEach((entry) => {
+            if (!entry.isIntersecting || isLoading) return;
+            isLoading = true;
+            setTimeout(() => {
+              appendBatch(3);
+              isLoading = false;
+            }, 260);
+          });
+        },
+        { rootMargin: "280px 0px 280px 0px" },
+      );
+
+      feedObserver.observe(sentinel);
+    </script>
+  </body>
+</html>
