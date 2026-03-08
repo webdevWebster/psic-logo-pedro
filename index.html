@@ -464,6 +464,132 @@
         color: var(--accent);
       }
 
+      .feedbacks {
+        position: relative;
+      }
+
+      .feedback-carousel {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .feedback-viewport {
+        overflow: hidden;
+        border-radius: 24px;
+      }
+
+      .feedback-track {
+        display: flex;
+        gap: 1rem;
+        transition: transform 0.6s ease;
+        will-change: transform;
+      }
+
+      .feedback-card {
+        flex: 0 0 calc((100% - 2rem) / 3);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        background:
+          radial-gradient(
+            circle at 85% 8%,
+            rgba(198, 168, 94, 0.22),
+            transparent 34%
+          ),
+          linear-gradient(150deg, #1a2f4b, #12233a);
+        box-shadow: var(--shadow);
+        padding: 1.35rem;
+        position: relative;
+      }
+
+      .feedback-card::before {
+        content: "“";
+        position: absolute;
+        top: 0.2rem;
+        right: 0.9rem;
+        font-family: "Fraunces", serif;
+        font-size: 3.5rem;
+        color: rgba(198, 168, 94, 0.2);
+        line-height: 1;
+      }
+
+      .feedback-stars {
+        color: #f3c86a;
+        letter-spacing: 0.08em;
+        font-size: 0.88rem;
+      }
+
+      .feedback-text {
+        margin-top: 0.55rem;
+        color: #ebe5d7;
+      }
+
+      .feedback-author {
+        margin-top: 1rem;
+        padding-top: 0.8rem;
+        border-top: 1px solid rgba(244, 241, 234, 0.13);
+      }
+
+      .feedback-author strong {
+        display: block;
+        color: #f7f0e1;
+      }
+
+      .feedback-author span {
+        color: #aab9ce;
+        font-size: 0.9rem;
+      }
+
+      .feedback-nav {
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(198, 168, 94, 0.5);
+        border-radius: 50%;
+        background: rgba(15, 28, 46, 0.78);
+        color: var(--accent);
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .feedback-nav:hover {
+        transform: translateY(-2px);
+        border-color: rgba(198, 168, 94, 0.9);
+      }
+
+      .feedback-dots {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.42rem;
+      }
+
+      .feedback-dot {
+        width: 9px;
+        height: 9px;
+        border: 0;
+        border-radius: 999px;
+        background: #426187;
+        cursor: pointer;
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s ease;
+      }
+
+      .feedback-dot.active {
+        background: var(--accent);
+        transform: scale(1.2);
+      }
+
+      .feedback-note {
+        margin-top: 0.75rem;
+        color: #9db0c9;
+        font-size: 0.9rem;
+      }
+
       .gallery-grid {
         display: grid;
         grid-template-columns: 1.1fr 0.9fr 1fr;
@@ -641,6 +767,10 @@
           grid-template-columns: 1fr;
         }
 
+        .feedback-card {
+          flex-basis: calc((100% - 1rem) / 2);
+        }
+
         .hero {
           padding-top: 4.6rem;
         }
@@ -780,6 +910,24 @@
           min-height: 240px;
         }
 
+        .feedback-carousel {
+          grid-template-columns: 1fr;
+          gap: 0.6rem;
+        }
+
+        .feedback-track {
+          gap: 0.75rem;
+        }
+
+        .feedback-card {
+          flex-basis: 100%;
+          padding: 1.05rem;
+        }
+
+        .feedback-nav {
+          display: none;
+        }
+
         .btn {
           width: 100%;
           padding: 0.9rem 1rem;
@@ -803,20 +951,16 @@
         <div class="container hero-grid">
           <div class="hero-copy reveal">
             <div class="hero-brand" aria-label="Logomarca">
-              <div class="hero-brand-mark">
-                <img
-                  src="assets/logo-marca.png"
-                  alt="Logomarca de Pedro Henrique"
-                  onerror="
-                    this.style.display='none';
-                    this.parentElement.classList.add('fallback');
-                  "
-                />
-                <span>PH</span>
-              </div>
-              <small>Pedro Henrique Psicólogo</small>
+              <img
+                src="assets/logo marca/logo.png"
+                alt="Logomarca de Pedro Henrique"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentElement.classList.add('fallback');
+                "
+                width="150"
+              />
             </div>
-            <span class="tag">Quem sou eu</span>
             <h1>
               Pedro Henrique, psicólogo movido por escuta, verdade e
               transformação.
@@ -912,7 +1056,7 @@
                 </article>
               </div>
               <div class="timeline-action reveal">
-                <a class="btn" href="quemsou.html">Quem sou eu?</a>
+                <a class="btn">Quem sou eu?</a>
               </div>
             </div>
           </div>
@@ -1019,6 +1163,45 @@
               </article>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section feedbacks">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="tag">Feedbacks</span>
+            <h2>Resultados percebidos no processo terapêutico.</h2>
+            <p>
+              Relatos que destacam o profissionalismo, a condução ética e a
+              clareza no acompanhamento clínico.
+            </p>
+            <p class="feedback-note">
+              Depoimentos fictícios para demonstração visual da página.
+            </p>
+          </div>
+
+          <div class="feedback-carousel reveal" id="feedback-carousel">
+            <button
+              class="feedback-nav"
+              id="feedback-prev"
+              type="button"
+              aria-label="Feedback anterior"
+            >
+              &#10094;
+            </button>
+            <div class="feedback-viewport">
+              <div class="feedback-track" id="feedback-track"></div>
+            </div>
+            <button
+              class="feedback-nav"
+              id="feedback-next"
+              type="button"
+              aria-label="Próximo feedback"
+            >
+              &#10095;
+            </button>
+          </div>
+          <div class="feedback-dots reveal" id="feedback-dots"></div>
         </div>
       </section>
 
@@ -1164,6 +1347,183 @@
             layer.style.transform = "";
           });
         });
+      }
+
+      const feedbackItems = [
+        {
+          name: "Paciente A.",
+          role: "Empresária, 34 anos",
+          text: "A condução foi extremamente profissional desde a primeira sessão. Saí de um quadro de ansiedade intensa para uma rotina com mais clareza e estabilidade emocional.",
+        },
+        {
+          name: "Paciente B.",
+          role: "Estudante, 22 anos",
+          text: "Pedro tem uma escuta técnica e humana ao mesmo tempo. O plano terapêutico foi muito organizado e me ajudou a lidar melhor com autocrítica e insegurança.",
+        },
+        {
+          name: "Responsável C.",
+          role: "Mãe de adolescente",
+          text: "Percebemos evolução real no comportamento e na comunicação em casa. O acompanhamento foi cuidadoso, ético e com orientação muito clara para a família.",
+        },
+        {
+          name: "Paciente D.",
+          role: "Advogado, 41 anos",
+          text: "O que mais me marcou foi o profissionalismo nas intervenções. As sessões têm profundidade, direção prática e respeito absoluto ao meu ritmo.",
+        },
+        {
+          name: "Paciente E.",
+          role: "Profissional de saúde, 29 anos",
+          text: "A abordagem baseada em evidências me trouxe confiança no processo. Em poucos meses, consegui melhorar minha regulação emocional e meus limites.",
+        },
+        {
+          name: "Paciente F.",
+          role: "Servidor público, 37 anos",
+          text: "Atendimento muito sério e acolhedor. Senti segurança para trabalhar questões difíceis e transformar isso em ações concretas no dia a dia.",
+        },
+      ];
+
+      const feedbackTrack = document.getElementById("feedback-track");
+      const feedbackDots = document.getElementById("feedback-dots");
+      const feedbackPrev = document.getElementById("feedback-prev");
+      const feedbackNext = document.getElementById("feedback-next");
+      const feedbackCarousel = document.getElementById("feedback-carousel");
+
+      if (
+        feedbackTrack &&
+        feedbackDots &&
+        feedbackPrev &&
+        feedbackNext &&
+        feedbackCarousel
+      ) {
+        feedbackTrack.innerHTML = feedbackItems
+          .map(
+            (item) =>
+              '<article class="feedback-card">' +
+              '<div class="feedback-stars" aria-label="Avaliacao maxima">★★★★★</div>' +
+              '<p class="feedback-text">' +
+              item.text +
+              "</p>" +
+              '<div class="feedback-author">' +
+              "<strong>" +
+              item.name +
+              "</strong>" +
+              "<span>" +
+              item.role +
+              "</span>" +
+              "</div>" +
+              "</article>",
+          )
+          .join("");
+
+        let currentSlide = 0;
+        let autoTimer = null;
+        let resizeTimer = null;
+
+        const getVisibleSlides = () => {
+          if (window.innerWidth <= 640) return 1;
+          if (window.innerWidth <= 980) return 2;
+          return 3;
+        };
+
+        const getStepCount = () => {
+          const cards = feedbackTrack.querySelectorAll(".feedback-card");
+          return Math.max(1, cards.length - getVisibleSlides() + 1);
+        };
+
+        const updateDotsState = () => {
+          const dots = feedbackDots.querySelectorAll(".feedback-dot");
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentSlide);
+          });
+        };
+
+        const updateCarousel = () => {
+          const cards = feedbackTrack.querySelectorAll(".feedback-card");
+          if (!cards.length) return;
+
+          const maxIndex = getStepCount() - 1;
+          if (currentSlide > maxIndex) currentSlide = 0;
+
+          const cardWidth = cards[0].getBoundingClientRect().width;
+          const gap = Number.parseFloat(getComputedStyle(feedbackTrack).gap || "16");
+          const offset = (cardWidth + gap) * currentSlide;
+
+          feedbackTrack.style.transform = "translateX(-" + offset + "px)";
+          updateDotsState();
+        };
+
+        const buildDots = () => {
+          const steps = getStepCount();
+          feedbackDots.innerHTML = "";
+
+          for (let i = 0; i < steps; i += 1) {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "feedback-dot" + (i === currentSlide ? " active" : "");
+            dot.setAttribute("aria-label", "Ir para feedback " + (i + 1));
+            dot.addEventListener("click", () => {
+              currentSlide = i;
+              updateCarousel();
+              startAuto();
+            });
+            feedbackDots.appendChild(dot);
+          }
+        };
+
+        const goToSlide = (index) => {
+          const maxIndex = getStepCount() - 1;
+          if (index > maxIndex) currentSlide = 0;
+          else if (index < 0) currentSlide = maxIndex;
+          else currentSlide = index;
+          updateCarousel();
+        };
+
+        const nextSlide = () => goToSlide(currentSlide + 1);
+        const prevSlide = () => goToSlide(currentSlide - 1);
+
+        const stopAuto = () => {
+          if (autoTimer) clearInterval(autoTimer);
+          autoTimer = null;
+        };
+
+        const startAuto = () => {
+          stopAuto();
+          autoTimer = setInterval(nextSlide, 4200);
+        };
+
+        feedbackNext.addEventListener("click", () => {
+          nextSlide();
+          startAuto();
+        });
+
+        feedbackPrev.addEventListener("click", () => {
+          prevSlide();
+          startAuto();
+        });
+
+        feedbackCarousel.addEventListener("mouseenter", stopAuto);
+        feedbackCarousel.addEventListener("mouseleave", startAuto);
+        feedbackCarousel.addEventListener("focusin", stopAuto);
+        feedbackCarousel.addEventListener("focusout", (event) => {
+          if (!feedbackCarousel.contains(event.relatedTarget)) startAuto();
+        });
+
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            buildDots();
+            updateCarousel();
+          }, 120);
+        });
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) stopAuto();
+          else startAuto();
+        });
+
+        buildDots();
+        updateCarousel();
+        startAuto();
       }
     </script>
   </body>
