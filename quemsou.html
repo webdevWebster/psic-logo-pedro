@@ -6,7 +6,7 @@
     <title>Quem Sou Eu | Pedro Henrique</title>
     <meta
       name="description"
-      content="Conheca a historia, valores e forma de trabalho do psicologo Pedro Henrique em uma experiencia de rolagem continua."
+      content="Conheça a história, os valores e a forma de trabalho do psicólogo Pedro Henrique em uma experiência de rolagem contínua."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -372,6 +372,178 @@
         font-size: 0.92rem;
       }
 
+      .back-home-float {
+        position: fixed;
+        left: clamp(14px, 3vw, 28px);
+        bottom: clamp(14px, 3vw, 28px);
+        z-index: 50;
+      }
+
+      .back-home-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.95rem 1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(198, 168, 94, 0.32);
+        background: rgba(15, 28, 46, 0.88);
+        color: #f4f1ea;
+        text-decoration: none;
+        box-shadow: 0 16px 34px rgba(8, 12, 20, 0.28);
+        backdrop-filter: blur(10px);
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          background-color 0.25s ease;
+      }
+
+      .back-home-button:hover {
+        transform: translateY(-3px);
+        border-color: rgba(198, 168, 94, 0.6);
+        background: rgba(18, 35, 58, 0.96);
+      }
+
+      .back-home-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        font-size: 1.05rem;
+        color: #0f1c2e;
+        background: linear-gradient(145deg, #c6a85e, #d7bc79);
+      }
+
+      .back-home-copy {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+      }
+
+      .back-home-copy strong {
+        font-size: 0.88rem;
+        color: #f8f2e6;
+      }
+
+      .back-home-copy span {
+        font-size: 0.76rem;
+        color: #a9b8cc;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        right: clamp(14px, 3vw, 28px);
+        bottom: clamp(14px, 3vw, 28px);
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.75rem;
+      }
+
+      .whatsapp-chat {
+        position: relative;
+        max-width: min(82vw, 290px);
+        padding: 0.9rem 1rem;
+        border-radius: 18px 18px 6px 18px;
+        border: 1px solid rgba(198, 168, 94, 0.35);
+        background: rgba(244, 241, 234, 0.97);
+        color: #17314a;
+        box-shadow: 0 18px 35px rgba(8, 12, 20, 0.28);
+        backdrop-filter: blur(10px);
+        animation: chatFloat 3.6s ease-in-out infinite;
+      }
+
+      .whatsapp-chat::after {
+        content: "";
+        position: absolute;
+        right: 18px;
+        bottom: -10px;
+        width: 18px;
+        height: 18px;
+        background: rgba(244, 241, 234, 0.97);
+        border-right: 1px solid rgba(198, 168, 94, 0.35);
+        border-bottom: 1px solid rgba(198, 168, 94, 0.35);
+        transform: rotate(45deg);
+      }
+
+      .whatsapp-chat strong {
+        display: block;
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+
+      .whatsapp-chat span {
+        display: block;
+        margin-top: 0.28rem;
+        font-size: 0.84rem;
+        color: #476079;
+      }
+
+      .whatsapp-typing {
+        display: inline-flex;
+        gap: 0.28rem;
+        margin-top: 0.62rem;
+      }
+
+      .whatsapp-typing i {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #25d366;
+        opacity: 0.35;
+        animation: typingPulse 1.2s ease-in-out infinite;
+      }
+
+      .whatsapp-typing i:nth-child(2) {
+        animation-delay: 0.18s;
+      }
+
+      .whatsapp-typing i:nth-child(3) {
+        animation-delay: 0.36s;
+      }
+
+      .whatsapp-button {
+        position: relative;
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        border: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: linear-gradient(145deg, #25d366, #128c4a);
+        box-shadow:
+          0 16px 34px rgba(18, 140, 74, 0.34),
+          0 0 0 0 rgba(37, 211, 102, 0.34);
+        animation: whatsappPulse 2.8s ease-out infinite;
+        transition: transform 0.25s ease;
+      }
+
+      .whatsapp-button:hover {
+        transform: translateY(-3px) scale(1.03);
+      }
+
+      .whatsapp-button svg {
+        width: 32px;
+        height: 32px;
+        fill: #fff;
+      }
+
+      .whatsapp-button-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       @keyframes drift {
         0%,
         100% {
@@ -379,6 +551,46 @@
         }
         50% {
           transform: translate3d(22px, -20px, 0) scale(1.05);
+        }
+      }
+
+      @keyframes chatFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      @keyframes typingPulse {
+        0%,
+        100% {
+          opacity: 0.35;
+          transform: translateY(0);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(-2px);
+        }
+      }
+
+      @keyframes whatsappPulse {
+        0% {
+          box-shadow:
+            0 16px 34px rgba(18, 140, 74, 0.34),
+            0 0 0 0 rgba(37, 211, 102, 0.28);
+        }
+        70% {
+          box-shadow:
+            0 16px 34px rgba(18, 140, 74, 0.34),
+            0 0 0 18px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow:
+            0 16px 34px rgba(18, 140, 74, 0.34),
+            0 0 0 0 rgba(37, 211, 102, 0);
         }
       }
 
@@ -419,6 +631,70 @@
         .story-content h3 {
           font-size: clamp(1.35rem, 8vw, 2rem);
         }
+
+        .whatsapp-button {
+          width: 62px;
+          height: 62px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .footer {
+          padding-bottom: 6.8rem;
+        }
+
+        .back-home-float {
+          left: 12px;
+          bottom: 12px;
+        }
+
+        .back-home-button {
+          padding: 0.8rem 0.9rem;
+          gap: 0.55rem;
+        }
+
+        .back-home-icon {
+          width: 32px;
+          height: 32px;
+          font-size: 0.95rem;
+        }
+
+        .back-home-copy strong {
+          font-size: 0.82rem;
+        }
+
+        .back-home-copy span {
+          font-size: 0.72rem;
+        }
+
+        .whatsapp-float {
+          right: 12px;
+          bottom: 12px;
+          gap: 0.6rem;
+        }
+
+        .whatsapp-chat {
+          max-width: min(88vw, 250px);
+          padding: 0.8rem 0.9rem;
+        }
+
+        .whatsapp-chat strong {
+          font-size: 0.88rem;
+        }
+
+        .whatsapp-chat span {
+          font-size: 0.78rem;
+        }
+
+        .whatsapp-button {
+          width: 58px;
+          height: 58px;
+        }
+
+        .whatsapp-button svg {
+          width: 28px;
+          height: 28px;
+        }
       }
     </style>
   </head>
@@ -434,17 +710,17 @@
         <div class="container hero-grid">
           <div class="reveal">
             <span class="tag">Quem sou eu</span>
-            <h1>Uma jornada clinica feita de presenca e transformacao.</h1>
+            <h1>Uma jornada clínica feita de presença e transformação.</h1>
             <p>
-              Esta pagina acompanha minha historia em formato continuo. Ao rolar
-              para baixo, voce encontra experiencias, valores e forma de
-              atuacao que guiam meu trabalho como psicologo.
+              Esta página acompanha minha história em formato contínuo. Ao rolar
+              para baixo, você encontra experiências, valores e a forma de
+              atuação que guiam meu trabalho como psicólogo.
             </p>
           </div>
           <figure class="hero-visual reveal">
             <img
-              src="pedro-henrique.jpg"
-              alt="Retrato profissional do psicologo Pedro Henrique"
+              src="assets/PEDRO-5591.jpg"
+              alt="Retrato profissional do psicólogo Pedro Henrique"
               onerror="
                 this.style.display = 'none';
                 this.parentElement.style.background =
@@ -461,11 +737,11 @@
             <span class="tag">Scroll infinito</span>
             <h2>Meu percurso, em movimento.</h2>
             <p>
-              Cada bloco traz um recorte da minha pratica: formacao, escuta
-              clinica, manejo emocional e acompanhamento individual.
+              Cada bloco traz um recorte da minha prática: formação, escuta
+              clínica, manejo emocional e acompanhamento individual.
             </p>
             <p>
-              A rolagem continua simboliza o processo terapeutico: evolutivo,
+              A rolagem contínua simboliza o processo terapêutico: evolutivo,
               consistente e sempre aberto a novas camadas.
             </p>
           </aside>
@@ -473,7 +749,7 @@
         <div id="story-feed" class="story-feed"></div>
         <div class="container">
           <p class="endless-note">
-            Continue rolando: novos capitulos surgem automaticamente.
+            Continue rolando: novos capítulos surgem automaticamente.
           </p>
           <div id="sentinel" class="sentinel" aria-hidden="true"></div>
         </div>
@@ -482,14 +758,14 @@
       <section class="section">
         <div class="container">
           <div class="cta reveal">
-            <h2>Se fizer sentido para voce, vamos iniciar esse processo.</h2>
+            <h2>Se fizer sentido para você, vamos iniciar esse processo.</h2>
             <p>
-              Um espaco terapeutico seguro, etico e direcionado para suas
+              Um espaço terapêutico seguro, ético e direcionado para suas
               necessidades atuais.
             </p>
             <a
               class="btn"
-              href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Pedro%20Henrique.%20Gostaria%20de%20agendar%20uma%20consulta."
+              href="https://wa.me/558899712718?text=Ol%C3%A1%2C%20Pedro%20Henrique.%20Gostaria%20de%20agendar%20uma%20consulta."
               target="_blank"
               rel="noopener noreferrer"
               >Agendar consulta</a
@@ -501,53 +777,89 @@
 
     <footer class="footer">
       <div class="container">
-        Pedro Henrique | Psicologo - Escuta, etica e estrategia terapeutica.
+        Pedro Henrique | Psicólogo - Escuta, ética e estratégia terapêutica.
       </div>
     </footer>
+
+    <div class="back-home-float">
+      <a
+        class="back-home-button"
+        href="./index.html"
+        aria-label="Voltar para a página principal"
+      >
+        <span class="back-home-icon" aria-hidden="true">←</span>
+        <span class="back-home-copy">
+          <strong>Voltar</strong>
+          <span>Página principal</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="whatsapp-float">
+      <div class="whatsapp-chat" aria-hidden="true">
+        <strong>Vamos agendar sua terapia?</strong>
+        <span>Fale comigo no WhatsApp e escolha seu melhor horário.</span>
+        <span class="whatsapp-typing"> <i></i><i></i><i></i> </span>
+      </div>
+      <a
+        class="whatsapp-button"
+        href="https://wa.me/558899712718?text=Ol%C3%A1%2C%20Pedro%20Henrique.%20Gostaria%20de%20agendar%20uma%20consulta."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Agendar terapia pelo WhatsApp"
+      >
+        <span class="whatsapp-button-label">Agendar terapia pelo WhatsApp</span>
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path
+            d="M27.3 4.7A15.3 15.3 0 0 0 3.8 24.1L2 30l6.1-1.6A15.3 15.3 0 1 0 27.3 4.7Zm-11 24.1c-2.5 0-4.9-.7-7-2l-.5-.3-3.6.9 1-3.5-.4-.6a12.5 12.5 0 1 1 10.5 5.5Zm6.9-9.3c-.4-.2-2.3-1.2-2.7-1.3-.4-.1-.6-.2-.9.2l-.8 1c-.2.2-.4.3-.8.1a10.4 10.4 0 0 1-5.1-4.5c-.2-.4 0-.6.2-.8l.6-.7.4-.7c.1-.2.1-.5 0-.7l-1.3-3.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9 0 1.7 1.2 3.4 1.4 3.6.2.2 2.4 3.8 5.9 5.1 3.5 1.3 3.5.9 4.1.8.6-.1 2.1-.9 2.4-1.8.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5Z"
+          ></path>
+        </svg>
+      </a>
+    </div>
 
     <script>
       const entries = [
         {
           title: "Escolha pela Psicologia",
-          text: "A decisao de atuar na clinica nasceu da vontade de oferecer um cuidado emocional profundo, com espaco real para escuta e reconstrucao de sentido.",
+          text: "A decisão de atuar na clínica nasceu da vontade de oferecer um cuidado emocional profundo, com espaço real para escuta e reconstrução de sentido.",
           img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?auto=format&fit=crop&w=1200&q=80",
-          alt: "Pessoa escrevendo em caderno durante reflexao",
+          alt: "Pessoa escrevendo em caderno durante reflexão",
         },
         {
-          title: "Base academica e tecnica",
-          text: "Minha formacao foi guiada por estudo constante e supervisao, buscando integrar teoria, sensibilidade clinica e intervencoes aplicaveis ao cotidiano.",
-          img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
-          alt: "Mesa com livros e anotacoes de estudo",
+          title: "Base acadêmica e técnica",
+          text: "Minha formação foi guiada por estudo constante e supervisão, buscando integrar teoria, sensibilidade clínica e intervenções aplicáveis ao cotidiano.",
+          img: "/assets/biblioteca.jpg",
+          alt: "Mesa com livros e anotações de estudo",
         },
         {
           title: "Escuta sem julgamento",
-          text: "Cada atendimento e conduzido com acolhimento e clareza, para que o paciente possa nomear emocoes, compreender padroes e abrir novas possibilidades.",
+          text: "Cada atendimento é conduzido com acolhimento e clareza, para que o paciente possa nomear emoções, compreender padrões e abrir novas possibilidades.",
           img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
-          alt: "Ambiente confortavel para conversa terapeutica",
+          alt: "Ambiente confortável para conversa terapêutica",
         },
         {
-          title: "Ansiedade e regulacao emocional",
-          text: "Atuo no desenvolvimento de recursos para lidar com ansiedade, sobrecarga mental e inseguranca, fortalecendo escolhas mais estaveis e saudaveis.",
+          title: "Ansiedade e regulação emocional",
+          text: "Atuo no desenvolvimento de recursos para lidar com ansiedade, sobrecarga mental e insegurança, fortalecendo escolhas mais estáveis e saudáveis.",
           img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80",
-          alt: "Pessoa em momento de respiracao e calma",
+          alt: "Pessoa em momento de respiração e calma",
         },
         {
           title: "Autoestima e identidade",
-          text: "O processo terapeutico tambem e um trabalho de reconhecimento pessoal: historia, limites, desejos e a construcao de uma relacao mais justa consigo.",
+          text: "O processo terapêutico também é um trabalho de reconhecimento pessoal: história, limites, desejos e a construção de uma relação mais justa consigo.",
           img: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80",
           alt: "Pessoa refletindo em frente ao espelho",
         },
         {
-          title: "Relacionamentos e vinculos",
-          text: "Nas sessoes, investigamos padroes de vinculo, comunicacao e fronteiras emocionais para relacoes mais conscientes e menos desgastantes.",
+          title: "Relacionamentos e vínculos",
+          text: "Nas sessões, investigamos padrões de vínculo, comunicação e fronteiras emocionais para relações mais conscientes e menos desgastantes.",
           img: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=80",
-          alt: "Duas pessoas conversando com atencao",
+          alt: "Duas pessoas conversando com atenção",
         },
         {
-          title: "Estrategia e acompanhamento",
-          text: "Alem da escuta, construimos objetivos terapeuticos com direcao pratica. O cuidado e continuo, respeitando ritmo, contexto e singularidade.",
+          title: "Estratégia e acompanhamento",
+          text: "Além da escuta, construímos objetivos terapêuticos com direção prática. O cuidado é contínuo, respeitando ritmo, contexto e singularidade.",
           img: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?auto=format&fit=crop&w=1200&q=80",
-          alt: "Sala de atendimento psicologico acolhedora",
+          alt: "Sala de atendimento psicológico acolhedora",
         },
       ];
 
@@ -586,7 +898,7 @@
           '" loading="lazy" />' +
           "</figure>" +
           '<div class="story-content">' +
-          '<span class="story-index">CAPITULO ' +
+          '<span class="story-index">CAPÍTULO ' +
           String(chapter).padStart(2, "0") +
           "</span>" +
           "<h3>" +

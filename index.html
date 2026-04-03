@@ -598,12 +598,23 @@
 
       .gallery-item {
         border-radius: var(--radius);
-        overflow: hidden;
         border: 1px solid var(--border);
         box-shadow: var(--shadow);
         min-height: 240px;
         position: relative;
-        background: #112139;
+        padding: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 0.85rem;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 88% 14%,
+            rgba(198, 168, 94, 0.2),
+            transparent 26%
+          ),
+          linear-gradient(150deg, #1a2f4b, #12233a);
       }
 
       .gallery-item.tall {
@@ -616,29 +627,112 @@
       .gallery-item::after {
         content: "";
         position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          180deg,
-          transparent 55%,
-          rgba(12, 19, 30, 0.75)
-        );
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        right: -50px;
+        top: -50px;
+        background: rgba(255, 255, 255, 0.04);
       }
 
       .gallery-item span {
-        position: absolute;
-        left: 1rem;
-        bottom: 1rem;
-        z-index: 2;
+        position: relative;
+        z-index: 1;
+        width: fit-content;
+        border-radius: 999px;
+        border: 1px solid rgba(198, 168, 94, 0.34);
+        background: rgba(15, 28, 46, 0.5);
+        padding: 0.32rem 0.7rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
         font-weight: 700;
-        color: #f4f1ea;
+        color: var(--accent);
       }
 
-      .gallery-item:hover img {
-        transform: scale(1.06);
+      .gallery-item h3 {
+        position: relative;
+        z-index: 1;
+        font-size: clamp(1.35rem, 2.5vw, 2rem);
+        color: #f6f0e4;
       }
 
-      .gallery-item img {
-        transition: transform 0.5s ease;
+      .gallery-item p {
+        position: relative;
+        z-index: 1;
+        max-width: 26ch;
+        color: #e6dfd0;
+      }
+
+      .faq-wrap {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .faq-item {
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background:
+          radial-gradient(
+            circle at 92% 12%,
+            rgba(198, 168, 94, 0.16),
+            transparent 28%
+          ),
+          linear-gradient(150deg, #1a2f4b, #12233a);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .faq-item summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 1.15rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-item summary span {
+        font-family: "Fraunces", serif;
+        font-size: 1.15rem;
+        color: #f8f2e6;
+      }
+
+      .faq-icon {
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+        background: rgba(198, 168, 94, 0.12);
+        border: 1px solid rgba(198, 168, 94, 0.3);
+        font-size: 1.25rem;
+        transition: transform 0.25s ease, background-color 0.25s ease;
+      }
+
+      .faq-item[open] .faq-icon {
+        transform: rotate(45deg);
+        background: rgba(198, 168, 94, 0.2);
+      }
+
+      .faq-answer {
+        padding: 0 1.25rem 1.15rem;
+      }
+
+      .faq-answer p {
+        color: #e6dfd0;
       }
 
       .cta {
@@ -704,6 +798,119 @@
         font-size: 0.92rem;
       }
 
+      .whatsapp-float {
+        position: fixed;
+        right: clamp(14px, 3vw, 28px);
+        bottom: clamp(14px, 3vw, 28px);
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.75rem;
+      }
+
+      .whatsapp-chat {
+        position: relative;
+        max-width: min(82vw, 290px);
+        padding: 0.9rem 1rem;
+        border-radius: 18px 18px 6px 18px;
+        border: 1px solid rgba(198, 168, 94, 0.35);
+        background: rgba(244, 241, 234, 0.97);
+        color: #17314a;
+        box-shadow: 0 18px 35px rgba(8, 12, 20, 0.28);
+        backdrop-filter: blur(10px);
+        animation: chatFloat 3.6s ease-in-out infinite;
+      }
+
+      .whatsapp-chat::after {
+        content: "";
+        position: absolute;
+        right: 18px;
+        bottom: -10px;
+        width: 18px;
+        height: 18px;
+        background: rgba(244, 241, 234, 0.97);
+        border-right: 1px solid rgba(198, 168, 94, 0.35);
+        border-bottom: 1px solid rgba(198, 168, 94, 0.35);
+        transform: rotate(45deg);
+      }
+
+      .whatsapp-chat strong {
+        display: block;
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+
+      .whatsapp-chat span {
+        display: block;
+        margin-top: 0.28rem;
+        font-size: 0.84rem;
+        color: #476079;
+      }
+
+      .whatsapp-typing {
+        display: inline-flex;
+        gap: 0.28rem;
+        margin-top: 0.62rem;
+      }
+
+      .whatsapp-typing i {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #25d366;
+        opacity: 0.35;
+        animation: typingPulse 1.2s ease-in-out infinite;
+      }
+
+      .whatsapp-typing i:nth-child(2) {
+        animation-delay: 0.18s;
+      }
+
+      .whatsapp-typing i:nth-child(3) {
+        animation-delay: 0.36s;
+      }
+
+      .whatsapp-button {
+        position: relative;
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        border: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: linear-gradient(145deg, #25d366, #128c4a);
+        box-shadow:
+          0 16px 34px rgba(18, 140, 74, 0.34),
+          0 0 0 0 rgba(37, 211, 102, 0.34);
+        animation: whatsappPulse 2.8s ease-out infinite;
+        transition: transform 0.25s ease;
+      }
+
+      .whatsapp-button:hover {
+        transform: translateY(-3px) scale(1.03);
+      }
+
+      .whatsapp-button svg {
+        width: 32px;
+        height: 32px;
+        fill: #fff;
+      }
+
+      .whatsapp-button-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       @keyframes drift {
         0%,
         100% {
@@ -751,6 +958,46 @@
         }
         65% {
           box-shadow: 0 0 0 12px rgba(198, 168, 94, 0);
+        }
+      }
+
+      @keyframes chatFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      @keyframes typingPulse {
+        0%,
+        100% {
+          opacity: 0.35;
+          transform: translateY(0);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(-2px);
+        }
+      }
+
+      @keyframes whatsappPulse {
+        0% {
+          box-shadow:
+            0 16px 34px rgba(18, 140, 74, 0.34),
+            0 0 0 0 rgba(37, 211, 102, 0.28);
+        }
+        70% {
+          box-shadow:
+            0 16px 34px rgba(18, 140, 74, 0.34),
+            0 0 0 18px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow:
+            0 16px 34px rgba(18, 140, 74, 0.34),
+            0 0 0 0 rgba(37, 211, 102, 0);
         }
       }
 
@@ -824,6 +1071,11 @@
         .cta {
           padding: 2.4rem 1.05rem;
           border-radius: 22px;
+        }
+
+        .whatsapp-button {
+          width: 62px;
+          height: 62px;
         }
       }
 
@@ -910,6 +1162,19 @@
           min-height: 240px;
         }
 
+        .faq-item summary {
+          padding: 1rem 1rem;
+          align-items: flex-start;
+        }
+
+        .faq-item summary span {
+          font-size: 1rem;
+        }
+
+        .faq-answer {
+          padding: 0 1rem 1rem;
+        }
+
         .feedback-carousel {
           grid-template-columns: 1fr;
           gap: 0.6rem;
@@ -934,7 +1199,36 @@
         }
 
         .footer {
-          padding: 1.4rem 0 2.2rem;
+          padding: 1.4rem 0 6.8rem;
+        }
+
+        .whatsapp-float {
+          right: 12px;
+          bottom: 12px;
+          gap: 0.6rem;
+        }
+
+        .whatsapp-chat {
+          max-width: min(88vw, 250px);
+          padding: 0.8rem 0.9rem;
+        }
+
+        .whatsapp-chat strong {
+          font-size: 0.88rem;
+        }
+
+        .whatsapp-chat span {
+          font-size: 0.78rem;
+        }
+
+        .whatsapp-button {
+          width: 58px;
+          height: 58px;
+        }
+
+        .whatsapp-button svg {
+          width: 28px;
+          height: 28px;
         }
       }
     </style>
@@ -1056,7 +1350,7 @@
                 </article>
               </div>
               <div class="timeline-action reveal">
-                <a class="btn">Quem sou eu?</a>
+                <a class="btn" href="/quemsou.html">Quem sou eu?</a>
               </div>
             </div>
           </div>
@@ -1209,31 +1503,127 @@
         <div class="container">
           <div class="section-head reveal">
             <span class="tag">Galeria</span>
-            <h2>Imagens que representam meu trabalho.</h2>
+            <h2>Aspectos que representam meu trabalho.</h2>
+            <p>
+              Três pilares que orientam minha forma de cuidar, conduzir e
+              sustentar cada processo terapêutico.
+            </p>
           </div>
           <div class="gallery-grid">
-            <figure class="gallery-item tall reveal">
-              <img
-                src="pedro-henrique.jpg"
-                alt="Pedro Henrique em retrato profissional"
-                onerror="this.style.display = 'none'"
-              />
-              <span>Presença e escuta</span>
-            </figure>
-            <figure class="gallery-item medium reveal">
-              <img
-                src="https://cdn.agenciainsula.com.br/inpbe.com/img-inpbe-montanha.webp"
-                alt="Livros e ambiente de estudo"
-              />
+            <article class="gallery-item tall reveal">
+              <span>Presença</span>
+              <h3>Escuta que acolhe sem pressa.</h3>
+              <p>
+                Cada sessão é um espaço para ser ouvido com atenção real,
+                respeito ao seu tempo e abertura para o que precisa ganhar nome
+                e sentido.
+              </p>
+            </article>
+            <article class="gallery-item medium reveal">
               <span>Base técnica</span>
-            </figure>
-            <figure class="gallery-item tall reveal">
-              <img
-                src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80"
-                alt="Momento de reflexão e calma"
-              />
+              <h3>Clínica com direção e critério.</h3>
+              <p>
+                O acompanhamento é estruturado com fundamentação teórica,
+                estratégia prática e intervenções pensadas para a sua realidade.
+              </p>
+            </article>
+            <article class="gallery-item tall reveal">
               <span>Acolhimento</span>
-            </figure>
+              <h3>Um vínculo seguro para atravessar processos difíceis.</h3>
+              <p>
+                O cuidado acontece com ética, sensibilidade e firmeza, para que
+                você se sinta amparado ao enfrentar dores, mudanças e escolhas.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="faq-wrap">
+            <div class="section-head reveal">
+              <span class="tag">FAQs</span>
+              <h2>Dúvidas frequentes antes de começar.</h2>
+              <p>
+                Respostas rápidas para ajudar você a entender como funciona o
+                processo terapêutico e o agendamento.
+              </p>
+            </div>
+
+            <div class="faq-list">
+              <details class="faq-item reveal" open>
+                <summary>
+                  <span>Como sei se este é o momento certo para iniciar a terapia?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    Se você sente ansiedade, sobrecarga emocional, conflitos nos
+                    relacionamentos ou dificuldade para lidar com questões do dia
+                    a dia, a terapia já pode ser um espaço importante de cuidado
+                    e clareza.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item reveal">
+                <summary>
+                  <span>Como funciona a primeira sessão?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    O primeiro encontro é um momento de escuta e compreensão da
+                    sua história, das demandas atuais e dos objetivos que fazem
+                    sentido para você. A partir disso, o acompanhamento é
+                    construído com direção e individualidade.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item reveal">
+                <summary>
+                  <span>As sessões são online ou presenciais?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    O atendimento é realizado online, com segurança, sigilo e
+                    praticidade. Isso permite manter a continuidade do processo
+                    terapêutico com mais flexibilidade de rotina.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item reveal">
+                <summary>
+                  <span>Qual é a duração e a frequência do acompanhamento?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    As sessões costumam ter 50 minutos e, em geral, acontecem
+                    semanalmente. A frequência pode ser ajustada conforme a
+                    necessidade clínica e o momento de vida de cada paciente.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item reveal">
+                <summary>
+                  <span>Como faço para agendar?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    Você pode agendar diretamente pelo WhatsApp. Basta clicar no
+                    botão da página e enviar sua mensagem para combinar horário,
+                    tirar dúvidas iniciais e dar o primeiro passo no processo.
+                  </p>
+                </div>
+              </details>
+            </div>
           </div>
         </div>
       </section>
@@ -1265,6 +1655,30 @@
         Pedro Henrique | Psicólogo - Sigilo, ética e acolhimento.
       </div>
     </footer>
+
+    <div class="whatsapp-float">
+      <div class="whatsapp-chat" aria-hidden="true">
+        <strong>Vamos agendar sua terapia?</strong>
+        <span>Fale comigo no WhatsApp e escolha seu melhor horário.</span>
+        <span class="whatsapp-typing">
+          <i></i><i></i><i></i>
+        </span>
+      </div>
+      <a
+        class="whatsapp-button"
+        href="https://wa.me/558899712718?text=Ol%C3%A1%2C%20Pedro%20Henrique.%20Gostaria%20de%20agendar%20uma%20consulta."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Agendar terapia pelo WhatsApp"
+      >
+        <span class="whatsapp-button-label">Agendar terapia pelo WhatsApp</span>
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path
+            d="M27.3 4.7A15.3 15.3 0 0 0 3.8 24.1L2 30l6.1-1.6A15.3 15.3 0 1 0 27.3 4.7Zm-11 24.1c-2.5 0-4.9-.7-7-2l-.5-.3-3.6.9 1-3.5-.4-.6a12.5 12.5 0 1 1 10.5 5.5Zm6.9-9.3c-.4-.2-2.3-1.2-2.7-1.3-.4-.1-.6-.2-.9.2l-.8 1c-.2.2-.4.3-.8.1a10.4 10.4 0 0 1-5.1-4.5c-.2-.4 0-.6.2-.8l.6-.7.4-.7c.1-.2.1-.5 0-.7l-1.3-3.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9 0 1.7 1.2 3.4 1.4 3.6.2.2 2.4 3.8 5.9 5.1 3.5 1.3 3.5.9 4.1.8.6-.1 2.1-.9 2.4-1.8.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5Z"
+          ></path>
+        </svg>
+      </a>
+    </div>
 
     <script>
       const revealElements = document.querySelectorAll(".reveal");
@@ -1399,7 +1813,7 @@
           .map(
             (item) =>
               '<article class="feedback-card">' +
-              '<div class="feedback-stars" aria-label="Avaliacao maxima">★★★★★</div>' +
+              '<div class="feedback-stars" aria-label="Avaliação máxima">★★★★★</div>' +
               '<p class="feedback-text">' +
               item.text +
               "</p>" +
@@ -1445,7 +1859,9 @@
           if (currentSlide > maxIndex) currentSlide = 0;
 
           const cardWidth = cards[0].getBoundingClientRect().width;
-          const gap = Number.parseFloat(getComputedStyle(feedbackTrack).gap || "16");
+          const gap = Number.parseFloat(
+            getComputedStyle(feedbackTrack).gap || "16",
+          );
           const offset = (cardWidth + gap) * currentSlide;
 
           feedbackTrack.style.transform = "translateX(-" + offset + "px)";
@@ -1459,7 +1875,8 @@
           for (let i = 0; i < steps; i += 1) {
             const dot = document.createElement("button");
             dot.type = "button";
-            dot.className = "feedback-dot" + (i === currentSlide ? " active" : "");
+            dot.className =
+              "feedback-dot" + (i === currentSlide ? " active" : "");
             dot.setAttribute("aria-label", "Ir para feedback " + (i + 1));
             dot.addEventListener("click", () => {
               currentSlide = i;
